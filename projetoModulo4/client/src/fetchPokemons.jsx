@@ -28,7 +28,6 @@ const FetchPokemons = () => {
             };
 
             const data = await resposta.json();
-            console.log(data);
             setPokemons(prevPoke => {
                 const pokemonsFiltrados = data.map(poke => {
                     let nome = poke.name;
@@ -37,7 +36,6 @@ const FetchPokemons = () => {
                     const numero = poke.id;
                     const moves = poke.moves.slice(0, 3).map(move => move.move.name);
 
-                    const spriteBack = poke.sprites.back_default;
                     const spriteFront = poke.sprites.front_default;
 
                     const tipos = poke.types.map(tipo => tipo.type.name);
@@ -47,7 +45,7 @@ const FetchPokemons = () => {
                         tipos,
                         moves,
                         numero,
-                        [spriteFront, spriteBack]
+                        spriteFront
                     );
                 });
 
@@ -75,7 +73,7 @@ const FetchPokemons = () => {
                                     <p style={{ margin: '0' }}>{'#' + pokemon.numero}</p>
                                     <h5 className="modal-title fs-5">{pokemon.nome}</h5>
                                 </div>
-                                <img src={pokemon.fotos[0]} className="img-fluid" alt="..." />
+                                <img src={pokemon.foto} className="img-fluid" alt={pokemon.nome} />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
