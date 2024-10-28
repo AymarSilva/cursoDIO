@@ -8,6 +8,6 @@ const porta = 5000;
 server.use(cors());
 server.use(express.json());
 
-server.get('/pokemons', GetPokemons);
+server.get('/pokemons/:limit', GetPokemons);
 
 server.listen(porta,console.log(`Listening on ${porta}`));
